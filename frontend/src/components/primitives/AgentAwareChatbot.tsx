@@ -47,8 +47,8 @@ export const MessageComponent = memo(
     return (
       <Message
         className={cn(
-          "mx-auto w-full flex-col max-w-3xl gap-2 px-2 md:px-10",
-          isAssistant ? "justify-start" : "justify-end"
+          "mx-auto flex w-full max-w-3xl flex-col gap-2 px-0 sm:px-2 md:px-10",
+          isAssistant ? "items-start" : "items-end"
         )}
       >
         {isAssistant ? (
@@ -71,7 +71,7 @@ export const MessageComponent = memo(
               )}
             </div>
             <MessageContent
-              className="text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0"
+              className="text-foreground prose max-w-[85%] sm:max-w-[75%] rounded-lg bg-transparent p-0"
               markdown
             >
               {message.parts
@@ -93,7 +93,7 @@ export const MessageComponent = memo(
             )}
           </div>
         ) : (
-          <div className="flex w-full flex-col gap-2 items-end">
+          <div className="flex w-full max-w-lg flex-col gap-2 items-end">
             <MessageContent className="bg-muted text-primary max-w-[85%] rounded-3xl px-5 py-2.5 whitespace-pre-wrap sm:max-w-[75%]">
               {message.parts
                 .map((part) => (part.type === "text" ? part.text : null))
@@ -122,7 +122,7 @@ export const MessageComponent = memo(
 MessageComponent.displayName = "MessageComponent"
 
 const LoadingMessage = memo(() => (
-  <Message className="mx-auto flex w-full max-w-3xl flex-col justify-start gap-2 px-2 md:px-10">
+  <Message className="mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-0 md:px-10">
     <div className="group flex w-full flex-col gap-0">
       <div className="text-foreground prose w-full min-w-0 flex-1 rounded-lg bg-transparent p-0">
         <DotsLoader />
@@ -134,7 +134,7 @@ const LoadingMessage = memo(() => (
 LoadingMessage.displayName = "LoadingMessage"
 
 const ErrorMessage = memo(({ error }: { error: Error }) => (
-  <Message className="not-prose mx-auto flex w-full max-w-3xl flex-col justify-start gap-2 px-2 md:px-10">
+  <Message className="not-prose mx-auto flex w-full max-w-3xl flex-col items-start gap-2 px-0 md:px-10">
     <div className="group flex w-full flex-col items-start gap-0">
       <div className="text-destructive-foreground flex min-w-0 flex-1 flex-row items-center gap-2 rounded-lg border-2 border-destructive/20 bg-destructive/10 px-2 py-1">
         <AlertTriangle size={16} className="text-destructive" />
