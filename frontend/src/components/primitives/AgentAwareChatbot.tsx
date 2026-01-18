@@ -47,7 +47,7 @@ export const MessageComponent = memo(
     return (
       <Message
         className={cn(
-          "mx-auto flex w-full max-w-3xl flex-col gap-2 px-2 md:px-10",
+          "mx-auto w-full flex-col max-w-3xl gap-2 px-2 md:px-10",
           isAssistant ? "justify-start" : "justify-end"
         )}
       >
